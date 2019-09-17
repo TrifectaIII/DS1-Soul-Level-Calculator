@@ -29,14 +29,20 @@ hr {
 }
 
 table {
-    /* width:100%; */
     margin:auto;
-    width: 70%;
+    width: 75%;
     max-width:500px;
+    font-size: large;
 }
 table, th, td {
     border: 1px solid black;
 }
+
+thead {
+    background-color: black;
+    color:white;
+}
+
 tbody > tr > th {
     font-weight: normal;
 }
