@@ -13,16 +13,19 @@ h1{
     font-size:large;
 }
 
-p {
-    font-size:x-large;
-}
-
 input {
     font-size: x-large;
 }
 
+p {
+    font-size:x-large;
+    margin-top:50px;
+}
+
 hr {
     width:60%;
+    margin-bottom:25px;
+    margin-top:25px;
 }
 
 table {
