@@ -46,3 +46,40 @@ thead {
 tbody > tr > th {
     font-weight: normal;
 }
+
+.main-page {
+    
+}
+
+.headbar {
+    position:fixed;
+    top:0px;
+    right:0px;
+    left:0px;
+    text-align: center;
+    width:100%;
+    z-index: 1;
+    background-color:grey;
+    padding:20px 0px;
+    color:white;
+}
+
+.headbar a:link {
+    color:yellow;
+    text-decoration: none;
+}
+
+.headbar a:visited {
+    color:yellow;
+    text-decoration: none;
+}
+
+.headbar a:hover {
+    color:white;
+    text-decoration: underline;
+}
+
+.headbar a:active {
+    color:white;
+    text-decoration: underline;
+}
