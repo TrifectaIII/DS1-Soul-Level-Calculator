@@ -46,7 +46,7 @@ function genOutput (output,start,goal) {
 
     if (total > 0){
         var message = '<p>To get from SL <b>'+start.toString()+'</b> to SL <b>'+
-        goal.toString()+'</b>, it will take <b>'+total.toString()+
+        goal.toString()+'</b>, it will take <b>&asymp; '+total.toString()+
         '</b> Souls.</p><hr>';
 
 
