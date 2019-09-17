@@ -34,49 +34,55 @@ function calcSouls (start, goal) {
 }
 
 function genOutput (output,start,goal) {
+    if (start < 1){
+        start = 1;
+    }
+    if (goal > 713){
+        goal = 713;
+    }
     var souls = calcSouls(start,goal);
     var total = souls.total;
     var levels = souls.levels;
 
-    var message = '<p>To get from SL <b>'+start.toString()+'</b> to SL <b>'+
+    if (total > 0){
+        var message = '<p>To get from SL <b>'+start.toString()+'</b> to SL <b>'+
         goal.toString()+'</b>, it will take <b>'+total.toString()+
         '</b> Souls.</p><hr>';
 
 
-    var table = `<table>
-                <thead>
-                <tr>
-                    <th>Level</th>
-                    <th>Souls Required</th>
-                    <th>Total</th>
-                </tr>
-                </thead>
-                <tbody>`;
+        var table = `<table>
+                    <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>Souls Required</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>`;
 
-    var cumulative = 0;
-    for (let level in levels) {
-        cumulative += levels[level];
-        table += '<tr><th>'+
-            level.toString()+'</th><th>'+
-            levels[level].toString()+'</th><th>'+
-            cumulative.toString()+'</th></tr>';
+        var cumulative = 0;
+        for (let level in levels) {
+            cumulative += levels[level];
+            table += '<tr><th>'+
+                level.toString()+'</th><th>'+
+                levels[level].toString()+'</th><th>'+
+                cumulative.toString()+'</th></tr>';
+        }
+
+        table += '</tbody></table>'
+            
+        output.innerHTML = message+table;
+    } else {
+        output.innerHTML = '';
     }
-
-    table += '</tbody></table>'
-        
-    output.innerHTML = message+ table;
 }
 
 var start_level = document.querySelector('.start_level');
 var goal_level = document.querySelector('.goal_level');
 var output = document.querySelector('.output');
 
-// console.log(calcSouls('hello',66))
+var started = false;
 
-start_level.addEventListener('change', function () {
+setInterval(function () {
     genOutput(output,parseInt(start_level.value),parseInt(goal_level.value))
-})
-
-goal_level.addEventListener('change', function () {
-    genOutput(output,parseInt(start_level.value),parseInt(goal_level.value))
-})
+},250)
