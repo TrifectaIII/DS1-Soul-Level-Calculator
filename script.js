@@ -87,11 +87,9 @@ var startval = NaN;
 var goalval = NaN;
 
 setInterval(function () {
-    if (!isNaN(parseInt(start_level.value)) && !isNaN(parseInt(goal_level.value))){
-        if (startval != parseInt(start_level.value) || goalval != parseInt(goal_level.value)){
-            startval = parseInt(start_level.value);
-            goalval = parseInt(goal_level.value);
-            genOutput(output,parseInt(start_level.value),parseInt(goal_level.value));
-        }; 
-    };
+    if (startval != parseInt(start_level.value) || goalval != parseInt(goal_level.value)){
+        startval = parseInt(start_level.value);
+        goalval = parseInt(goal_level.value);
+        genOutput(output,parseInt(start_level.value),parseInt(goal_level.value));
+    }; 
 },250)
