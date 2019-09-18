@@ -54,7 +54,7 @@ function genOutput (output,start,goal) {
                     <thead>
                     <tr>
                         <th>Level</th>
-                        <th>Souls Required</th>
+                        <th>Souls</th>
                         <th>Total</th>
                     </tr>
                     </thead>

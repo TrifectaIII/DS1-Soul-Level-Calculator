@@ -1,12 +1,12 @@
 body {
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
+    max-width: 100%;
 }
 
-h1{
+.main-header{
     margin-top:100px;
     margin-bottom:50px;
-    text-align: center;
 }
 
 .label {
@@ -15,6 +15,8 @@ h1{
 
 input {
     font-size: x-large;
+    max-width: 100%;
+    text-align: center;
 }
 
 .output > p {
@@ -22,19 +24,13 @@ input {
     margin-top:50px;
 }
 
-hr {
-    width:60%;
-    margin-bottom:25px;
-    margin-top:25px;
-}
-
 table {
     margin:auto;
-    width: 75%;
+    /* width: 75%;
     max-width:500px;
-    font-size: large;
-}
-table, th, td {
+    font-size: large; */
+} 
+/* table, th, td {
     border: 1px solid black;
 }
 
@@ -45,41 +41,46 @@ thead {
 
 tbody > tr > th {
     font-weight: normal;
+}  */
+
+/* .container {
+    position:relative;
+    min-height: 98vh;
 }
 
 .main-page {
-    
+    padding-bottom:10rem;
 }
 
 .headbar {
-    position:fixed;
-    top:0px;
-    right:0px;
-    left:0px;
+    margin-bottom:0px;
+    position:absolute;
+    bottom:0px;
     text-align: center;
     width:100%;
     z-index: 1;
-    background-color:grey;
-    padding:20px 0px;
+    background-color:black;
+    height: 5rem;
     color:white;
+    padding-top:3rem;
+} */
+
+.headbar span {
+    margin:auto;
 }
 
 .headbar a:link {
-    color:yellow;
     text-decoration: none;
 }
 
 .headbar a:visited {
-    color:yellow;
     text-decoration: none;
 }
 
 .headbar a:hover {
-    color:white;
     text-decoration: underline;
 }
 
 .headbar a:active {
-    color:white;
     text-decoration: underline;
 }
