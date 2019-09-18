@@ -47,10 +47,12 @@ function genOutput (output,start,goal) {
     if (total > 0){
         var message = '<p>To get from SL <b>'+start.toString()+'</b> to SL <b>'+
         goal.toString()+'</b>, it will take <b>&asymp;'+total.toString()+
-        '</b> Souls.</p><hr>';
+        '</b> Souls.</p>';
 
+        var table = '';
 
-        var table = `<table>
+        if (Object.keys(levels).length > 1) {
+            table += `<hr><table>
                     <thead>
                     <tr>
                         <th>Level</th>
@@ -63,13 +65,14 @@ function genOutput (output,start,goal) {
         var cumulative = 0;
         for (let level in levels) {
             cumulative += levels[level];
-            table += '<tr><th>'+
-                level.toString()+'</th><th>'+
-                levels[level].toString()+'</th><th>'+
-                cumulative.toString()+'</th></tr>';
+            table += '<tr><td>'+
+                level.toString()+'</td><td>'+
+                levels[level].toString()+'</td><td>'+
+                cumulative.toString()+'</td></tr>';
         }
 
         table += '</tbody></table>'
+        }
             
         output.innerHTML = message+table;
     } else {
