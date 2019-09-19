@@ -31,7 +31,7 @@ table {
     border: 1px solid #E1E1E1;
     border-radius:4px;
     padding:10px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: monospace;
 } 
 
 table, th, td {
