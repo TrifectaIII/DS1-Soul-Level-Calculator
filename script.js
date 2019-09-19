@@ -1,32 +1,10 @@
 function calcSouls (start, goal) {
     var total = 0;
-    var level;
     var levels = {};
-
-    var lowlevels = {
-        2:673,
-        3:690,
-        4:707,
-        5:724,
-        6:741,
-        7:758,
-        8:775,
-        9:793,
-        10:811,
-        11:829,
-        12:847
-    }
+    var level;
 
     for (let i=start+1; i < goal+1; i++){
-        if (i <= 1){
-            //no souls before 1 -> 2
-            level = 0;
-        } else if (i <= 12) {
-            //formula not accurate below 12
-            level = lowlevels[i];
-        } else {
-            level = Math.round(0.02*Math.pow(i,3) + 3.06*Math.pow(i,2) + 105.6*i - 895);
-        }
+        level = values[i]; //from values.js
         levels[i] = level;
         total += level;
     }
@@ -46,7 +24,7 @@ function genOutput (output,start,goal) {
 
     if (total > 0){
         var message = '<p>To get from SL <b>'+start.toString()+'</b> to SL <b>'+
-        goal.toString()+'</b>, it will take <b>&asymp;'+total.toString()+
+        goal.toString()+'</b>, it will take <b>'+total.toString()+
         '</b> Souls.</p>';
 
         var table = '';
