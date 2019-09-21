@@ -1,9 +1,24 @@
+function formatNum (num) {
+    string = num.toString();
+    newstring = '';
+    counter = 0;
+    for (let i = string.length-1; i >= 0; i--) {
+        if (counter == 3) {
+            counter = 0;
+            newstring = ',' + newstring;
+        }
+        counter += 1;
+        newstring = string[i] + newstring;
+    }
+    return newstring;
+}
+
 function calcSouls (start, goal) {
     var total = 0;
     var levels = {};
     var level;
 
-    for (let i=start+1; i < goal+1; i++){
+    for (let i=start+1; i <= goal; i++){
         level = values[i]; //from values.js
         levels[i] = level;
         total += level;
@@ -15,8 +30,8 @@ function genOutput (output,start,goal) {
     if (start < 1){
         start = 1;
     }
-    if (goal > 713){
-        goal = 713;
+    if (goal > 715){
+        goal = 715;
     }
     var souls = calcSouls(start,goal);
     var total = souls.total;
@@ -24,13 +39,14 @@ function genOutput (output,start,goal) {
 
     if (total > 0){
         var message = '<p>To get from SL <b>'+start.toString()+'</b> to SL <b>'+
-        goal.toString()+'</b>, it will take <b>'+total.toString()+
+        goal.toString()+'</b>, it will take <b>'+formatNum(total)+
         '</b> Souls.</p>';
 
         var table = '';
 
         if (Object.keys(levels).length > 1) {
-            table += `<hr><table>
+            table += `<hr class='output_rule'>
+                    <table>
                     <thead>
                     <tr>
                         <th>Level</th>
@@ -40,14 +56,14 @@ function genOutput (output,start,goal) {
                     </thead>
                     <tbody>`;
 
-        var cumulative = 0;
-        for (let level in levels) {
-            cumulative += levels[level];
-            table += '<tr><td>'+
-                level.toString()+'</td><td>'+
-                levels[level].toString()+'</td><td>'+
-                cumulative.toString()+'</td></tr>';
-        }
+            var cumulative = 0;
+            for (let level in levels) {
+                cumulative += levels[level];
+                table += '<tr><th>'+
+                    level.toString()+'</th><td>'+
+                    levels[level].toString()+'</td><td>'+
+                    cumulative.toString()+'</td></tr>';
+            }
 
         table += '</tbody></table>'
         }
