@@ -26,7 +26,7 @@ function calcSouls(start, goal) {
     return { total: total, levels: levels };
 }
 
-function genOutput(output, start, goal) {
+function genOutput(div, start, goal) {
     if (start < 1) {
         start = 1;
     }
@@ -68,10 +68,14 @@ function genOutput(output, start, goal) {
             table += '</tbody></table>'
         }
 
-        output.innerHTML = message + table;
+        div.innerHTML = message + table;
     } else {
-        output.innerHTML = '';
+        div.innerHTML = '';
     }
+}
+
+function clearOutput(div) {
+    div.innerHTML = '';
 }
 
 var start_level = document.querySelector('.start_level');
@@ -87,6 +91,10 @@ setInterval(function () {
     if (startval != parseInt(start_level.value) || goalval != parseInt(goal_level.value)) {
         startval = parseInt(start_level.value);
         goalval = parseInt(goal_level.value);
-        genOutput(output, parseInt(start_level.value), parseInt(goal_level.value));
+        if (!isNaN(startval) && !isNaN(goalval)){
+            genOutput(output, startval, goalval);
+        } else {
+            clearOutput(output);
+        }
     };
 }, 250)
