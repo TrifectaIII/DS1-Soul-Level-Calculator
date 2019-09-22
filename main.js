@@ -1,3 +1,4 @@
+//formats number with commas
 function formatNum(num) {
     string = num.toString();
     newstring = '';
@@ -13,6 +14,7 @@ function formatNum(num) {
     return newstring;
 }
 
+//calculates the total number to get from start to goal level
 function calcSouls(start, goal) {
     var total = 0;
     var levels = {};
@@ -26,6 +28,7 @@ function calcSouls(start, goal) {
     return { total: total, levels: levels };
 }
 
+//generates output 
 function genOutput(div, start, goal) {
     if (start < 1) {
         start = 1;
@@ -87,14 +90,32 @@ var started = false;
 var startval = NaN;
 var goalval = NaN;
 
+//get cookie data
+var saved = cookie.get(['start','goal'],'none');
+if (!isNaN(parseInt(saved.start))) {
+    start_level.value = saved.start;
+}
+if (!isNaN(parseInt(saved.goal))) {
+    goal_level.value = saved.goal;
+}
+
+
+//Update Output when inputs are valid
 setInterval(function () {
+    //only check when inputs change
     if (startval != parseInt(start_level.value) || goalval != parseInt(goal_level.value)) {
         startval = parseInt(start_level.value);
         goalval = parseInt(goal_level.value);
-        if (!isNaN(startval) && !isNaN(goalval)){
+
+        //save new values to cookie
+        cookie.set('start',startval,{expires:7});
+        cookie.set('goal',goalval,{expires:7});
+
+        //generate new output if both are ints and goal is higher
+        if (!isNaN(startval) && !isNaN(goalval) && startval < goalval){
             genOutput(output, startval, goalval);
         } else {
             clearOutput(output);
         }
     };
-}, 250)
+}, 250);
