@@ -83,7 +83,7 @@ function clearOutput(div) {
 
 var start_level = document.querySelector('.start_level');
 var goal_level = document.querySelector('.goal_level');
-var output = document.querySelector('.output');
+var output = document.querySelector('.output_section');
 
 var startval = NaN;
 var goalval = NaN;
