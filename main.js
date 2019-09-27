@@ -85,8 +85,6 @@ var start_level = document.querySelector('.start_level');
 var goal_level = document.querySelector('.goal_level');
 var output = document.querySelector('.output');
 
-var started = false;
-
 var startval = NaN;
 var goalval = NaN;
 
