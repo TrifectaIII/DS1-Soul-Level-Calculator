@@ -1,17 +1,17 @@
 //formats number with commas
 function formatNum(num) {
-    string = num.toString();
-    newstring = '';
+    before = num.toString();
+    after = '';
     counter = 0;
-    for (let i = string.length - 1; i >= 0; i--) {
+    for (let i = before.length - 1; i >= 0; i--) {
         if (counter == 3) {
             counter = 0;
-            newstring = ',' + newstring;
+            after = ',' + after;
         }
         counter += 1;
-        newstring = string[i] + newstring;
+        after = before[i] + after;
     }
-    return newstring;
+    return after;
 }
 
 //calculates the total number to get from start to goal level
