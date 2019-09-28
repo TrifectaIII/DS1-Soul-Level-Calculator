@@ -104,25 +104,16 @@ setInterval(function () {
     if (startval != parseInt(start_level.value) || goalval != parseInt(goal_level.value)) {
         
         //reign in out-of-bounds 
-        if (isNaN(Math.max(1,parseInt(start_level.value)))){
+        if (isNaN(parseInt(start_level.value))){
             start_level.value = '';
         } else {
             start_level.value = Math.max(1,parseInt(start_level.value));
+            start_level.value = Math.min(715,parseInt(start_level.value));
         }
-        if (isNaN(Math.max(1,parseInt(goal_level.value)))){
+        if (isNaN(parseInt(goal_level.value))){
             goal_level.value = '';
         } else {
             goal_level.value = Math.max(1,parseInt(goal_level.value));
-        }
-
-        if (isNaN(Math.min(715,parseInt(start_level.value)))){
-            start_level.value = '';
-        } else {
-            start_level.value = Math.min(715,parseInt(start_level.value));
-        }
-        if (isNaN(Math.min(715,parseInt(goal_level.value)))){
-            goal_level.value = '';
-        } else {
             goal_level.value = Math.min(715,parseInt(goal_level.value));
         }
 
