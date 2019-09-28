@@ -26,12 +26,11 @@ body {
 table {
     margin:auto;
     width: 100%;
-    max-width:600px;
+    max-width:500px;
     font-size:large;
     border: 1px solid #E1E1E1;
     border-radius:4px;
     padding:10px;
-    font-family: monospace;
 } 
 
 table, th, td {
