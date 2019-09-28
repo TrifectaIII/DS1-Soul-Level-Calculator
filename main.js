@@ -104,8 +104,8 @@ setInterval(function () {
     if (startval != parseInt(start_level.value) || goalval != parseInt(goal_level.value)) {
         
         //reign in out-of-bounds 
-        if (parseInt(start_level.value) > 714) {
-            start_level.value = 714;
+        if (parseInt(start_level.value) > 715) {
+            start_level.value = 715;
         }
         if (parseInt(start_level.value) < 1) {
             start_level.value = 1;
@@ -114,8 +114,8 @@ setInterval(function () {
         if (parseInt(goal_level.value) > 715) {
             goal_level.value = 715;
         }
-        if (parseInt(goal_level.value) < 2) {
-            goal_level.value = 2;
+        if (parseInt(goal_level.value) < 1) {
+            goal_level.value = 1;
         }
 
         //update stored values
