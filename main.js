@@ -118,7 +118,7 @@ setInterval(function () {
             goal_level.value = 2;
         }
 
-
+        //update stored values
         startval = parseInt(start_level.value);
         goalval = parseInt(goal_level.value);
 
