@@ -134,3 +134,9 @@ setInterval(function () {
         }
     };
 }, 250);
+
+// reset button
+document.querySelector('.reset_button').addEventListener('click', function () {
+    start_level.value = '';
+    goal_level.value = '';
+});
