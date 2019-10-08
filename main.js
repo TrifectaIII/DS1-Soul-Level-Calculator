@@ -64,8 +64,8 @@ function genOutput(div, start, goal) {
                 cumulative += levels[level];
                 table += '<tr><th>' +
                     level.toString() + '</th><td>' +
-                    levels[level].toString() + '</td><td>' +
-                    cumulative.toString() + '</td></tr>';
+                    formatNum(levels[level])+ '</td><td>' +
+                    formatNum(cumulative) + '</td></tr>';
             }
 
             table += '</tbody></table>'
@@ -139,4 +139,14 @@ setInterval(function () {
 document.querySelector('.reset_button').addEventListener('click', function () {
     start_level.value = '';
     goal_level.value = '';
+    start_level.focus();
+});
+
+//shift button
+document.querySelector('.shift_button').addEventListener('click', function () {
+    if (!isNaN(parseInt(goal_level.value))) {
+        start_level.value = parseInt(goal_level.value);
+        goal_level.value = '';
+        goal_level.focus();
+    }
 });
