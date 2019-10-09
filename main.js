@@ -84,6 +84,8 @@ function clearOutput(div) {
 var start_level = document.querySelector('.start_level');
 var goal_level = document.querySelector('.goal_level');
 var output = document.querySelector('.output_section');
+var reset_button = document.querySelector('.reset_button');
+var shift_buttons = document.querySelectorAll('.shift_button');
 
 var startval = NaN;
 var goalval = NaN;
@@ -135,15 +137,15 @@ setInterval(function () {
     };
 }, 250);
 
-// reset button
-document.querySelector('.reset_button').addEventListener('click', function () {
+// reset button setup
+reset_button.addEventListener('click', function () {
     start_level.value = '';
     goal_level.value = '';
     start_level.focus();
 });
 
-//shift button
-document.querySelectorAll('.shift_button').forEach(function (button) {
+//shift button setup
+shift_buttons.forEach(function (button) {
     button.addEventListener('click', function () {
         if (!isNaN(parseInt(goal_level.value))) {
             start_level.value = parseInt(goal_level.value);
@@ -151,4 +153,10 @@ document.querySelectorAll('.shift_button').forEach(function (button) {
             goal_level.focus();
         }
     });
+});
+
+//remove buttons from tab order
+reset_button.tabIndex = -1;
+shift_buttons.forEach(function (button) {
+    button.tabIndex = -1;
 });
