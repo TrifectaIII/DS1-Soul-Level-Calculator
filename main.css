@@ -26,6 +26,33 @@ body {
     text-align: center;
 }
 
+.shift_button {
+    width:100%;
+    margin:auto;
+    padding:0px;
+}
+
+.desktop_col .shift_button {
+    width:100%;
+}
+
+.mobile_col .shift_button {
+    width:30%;
+}
+
+.desktop_col {
+    display:none;
+}
+
+@media (min-width: 550px) {
+    .desktop_col {
+        display:inline;
+    }
+    .mobile_col {
+        display:none;
+    }
+}
+
 .output_section > p {
     font-size:x-large;
     margin-top:25px;

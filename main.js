@@ -143,10 +143,12 @@ document.querySelector('.reset_button').addEventListener('click', function () {
 });
 
 //shift button
-document.querySelector('.shift_button').addEventListener('click', function () {
-    if (!isNaN(parseInt(goal_level.value))) {
-        start_level.value = parseInt(goal_level.value);
-        goal_level.value = '';
-        goal_level.focus();
-    }
+document.querySelectorAll('.shift_button').forEach(function (button) {
+    button.addEventListener('click', function () {
+        if (!isNaN(parseInt(goal_level.value))) {
+            start_level.value = parseInt(goal_level.value);
+            goal_level.value = '';
+            goal_level.focus();
+        }
+    });
 });
