@@ -160,3 +160,8 @@ reset_button.tabIndex = -1;
 shift_buttons.forEach(function (button) {
     button.tabIndex = -1;
 });
+
+//remove links from tab order
+document.querySelectorAll('a').forEach(function (link) {
+    link.tabIndex = -1;
+});
