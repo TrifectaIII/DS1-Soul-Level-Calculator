@@ -41,7 +41,7 @@ function genOutput(div, start, goal) {
     var levels = souls.levels;
 
     if (total > 0) {
-        var message = '<p>To get from SL <b>' + start.toString() + '</b> to SL <b>' +
+        var message = '<p>To get from SL <b class="dm-white">' + start.toString() + '</b> to SL <b class="dm-white">' +
             goal.toString() + '</b>, it will take <b class="dm-white">' + formatNum(total) +
             '</b> Souls.</p>';
 
