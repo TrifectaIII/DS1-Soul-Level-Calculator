@@ -42,7 +42,7 @@ function genOutput(div, start, goal) {
 
     if (total > 0) {
         var message = '<p>To get from SL <b>' + start.toString() + '</b> to SL <b>' +
-            goal.toString() + '</b>, it will take <b>' + formatNum(total) +
+            goal.toString() + '</b>, it will take <b class="dm-white">' + formatNum(total) +
             '</b> Souls.</p>';
 
         var table = '';
