@@ -52,9 +52,9 @@ function genOutput(div, start, goal) {
                     <table>
                     <thead>
                     <tr>
-                        <th>Level</th>
-                        <th>Souls</th>
-                        <th>Total</th>
+                        <th class="dm-white">Level</th>
+                        <th class="dm-white">Souls</th>
+                        <th class="dm-white">Total</th>
                     </tr>
                     </thead>
                     <tbody>`;
@@ -62,7 +62,7 @@ function genOutput(div, start, goal) {
             var cumulative = 0;
             for (let level in levels) {
                 cumulative += levels[level];
-                table += '<tr><th>' +
+                table += '<tr><th class="dm-white">' +
                     level.toString() + '</th><td>' +
                     formatNum(levels[level])+ '</td><td>' +
                     formatNum(cumulative) + '</td></tr>';
