@@ -21,15 +21,18 @@ function calcSouls(start, goal) {
     var level;
 
     for (let i = start + 1; i <= goal; i++) {
-        level = values[i]; //from values.js
-        levels[i] = level;
-        total += level;
+        souls = values[i]; //from values.js
+        total += souls;
+        levels[i] = {
+            single:souls,
+            cumulative:total,
+        }
     }
     return { total: total, levels: levels };
 }
 
 //generates output 
-function genOutput(div, start, goal) {
+function genOutput(div, start, goal, parser) {
     if (start < 1) {
         start = 1;
     }
@@ -41,37 +44,12 @@ function genOutput(div, start, goal) {
     var levels = souls.levels;
 
     if (total > 0) {
-        var message = '<p>To get from SL <b class="dm-white">' + start.toString() + '</b> to SL <b class="dm-white">' +
-            goal.toString() + '</b>, it will take <b class="dm-white">' + formatNum(total) +
-            '</b> Souls.</p>';
-
-        var table = '';
-
-        if (Object.keys(levels).length > 1) {
-            table += `<hr class='output_rule'>
-                    <table>
-                    <thead>
-                    <tr>
-                        <th class="dm-white">Level</th>
-                        <th class="dm-white">Souls</th>
-                        <th class="dm-white">Total</th>
-                    </tr>
-                    </thead>
-                    <tbody>`;
-
-            var cumulative = 0;
-            for (let level in levels) {
-                cumulative += levels[level];
-                table += '<tr><th class="dm-white">' +
-                    level.toString() + '</th><td>' +
-                    formatNum(levels[level])+ '</td><td>' +
-                    formatNum(cumulative) + '</td></tr>';
-            }
-
-            table += '</tbody></table>'
-        }
-
-        div.innerHTML = message + table;
+        div.innerHTML = parser({
+            start_level:start,
+            goal_level:goal,
+            total_souls:total,
+            level_info:levels,
+        })
     } else {
         div.innerHTML = '';
     }
@@ -83,9 +61,12 @@ function clearOutput(div) {
 
 var start_level = document.querySelector('.start_level');
 var goal_level = document.querySelector('.goal_level');
-var output = document.querySelector('.output_section');
 var reset_button = document.querySelector('.reset_button');
 var shift_buttons = document.querySelectorAll('.shift_button');
+
+//get output section
+var output_parser = Handlebars.compile(document.querySelector('.output_template').innerHTML);
+var output = document.querySelector('.output_section');
 
 var startval = NaN;
 var goalval = NaN;
@@ -130,7 +111,7 @@ setInterval(function () {
 
         //generate new output if both are ints and goal is higher
         if (!isNaN(startval) && !isNaN(goalval) && startval < goalval){
-            genOutput(output, startval, goalval);
+            genOutput(output, startval, goalval, output_parser);
         } else {
             clearOutput(output);
         }

@@ -22,6 +22,9 @@
 
   <!-- cookie.js-florian -->
   <script src="https://cdn.jsdelivr.net/npm/cookie_js@1.3.0/dist/cookie.umd.min.js"></script>
+
+  <!-- handlebars.js -->
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@4.3.3/dist/handlebars.min.js"></script>
 </head>
 
 <body>
@@ -80,6 +83,34 @@
             <br><br>
           </div>
         </div>
+
+        <!-- template for output -->
+        <script class="output_template" type="text/template">
+          <p>To get from SL <b class="dm-white">{{start_level}}</b> 
+            to SL <b class="dm-white">{{goal_level}}</b>
+            , it will take <b class="dm-white">{{total_souls}}</b> Souls.
+          </p>
+          <hr class='output_rule'>
+          <table>
+            <thead>
+              <tr>
+                  <th class="dm-white">Level</th>
+                  <th class="dm-white">Souls</th>
+                  <th class="dm-white">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each level_info}}
+              <tr>
+                <th class="dm-white">{{@key}}</th>
+                <td>{{single}}</td>
+                <td>{{cumulative}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </script>
+
         <!-- div will contain output -->
         <div class='output_section'></div>
       </div>
