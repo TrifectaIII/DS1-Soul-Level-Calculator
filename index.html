@@ -91,7 +91,9 @@
             , it will take <b class="dm-white">{{total_souls}}</b> Souls.
           </p>
           <hr class='output_rule'>
+          <!-- table for individual level values -->
           <table>
+            <!-- first row of categories -->
             <thead>
               <tr>
                   <th class="dm-white">Level</th>
@@ -100,6 +102,7 @@
               </tr>
             </thead>
             <tbody>
+              <!-- build row for each level -->
               {{#each level_info}}
               <tr>
                 <th class="dm-white">{{@key}}</th>

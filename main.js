@@ -44,6 +44,7 @@ function genOutput(div, start, goal, parser) {
     var levels = souls.levels;
 
     if (total > 0) {
+        //apply level info to parser
         div.innerHTML = parser({
             start_level:start,
             goal_level:goal,
@@ -59,14 +60,16 @@ function clearOutput(div) {
     div.innerHTML = '';
 }
 
+//pull from document
 var start_level = document.querySelector('.start_level');
 var goal_level = document.querySelector('.goal_level');
 var reset_button = document.querySelector('.reset_button');
 var shift_buttons = document.querySelectorAll('.shift_button');
-
-//get output section
-var output_parser = Handlebars.compile(document.querySelector('.output_template').innerHTML);
 var output = document.querySelector('.output_section');
+
+//init parser for the template
+var output_parser = Handlebars.compile(document.querySelector('.output_template').innerHTML);
+
 
 var startval = NaN;
 var goalval = NaN;
@@ -84,7 +87,8 @@ if (!isNaN(parseInt(saved.goal))) {
 //Update Output when inputs are valid
 setInterval(function () {
     //only check when inputs change
-    if (startval != parseInt(start_level.value) || goalval != parseInt(goal_level.value)) {
+    if (startval != parseInt(start_level.value) || 
+        goalval != parseInt(goal_level.value)) {
         
         //reign in out-of-bounds 
         if (parseInt(start_level.value) > 715) {
